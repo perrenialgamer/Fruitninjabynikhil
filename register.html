@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Register Page</title>
+</head>
+
+<body>
+    <div class="register-container">
+        <audio autoplay loop id="audioPlayer">
+            <source src="bgsong.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <input type="text" id="username" spellcheck="false" class="dabba p4" placeholder="Username">
+        <input type="text" id="email" spellcheck="false" class="dabba p1" placeholder="Email">
+        <input type="password" id="password" class="dabba p2" spellcheck="false" placeholder="Password">
+        <button type="button" id="register">Register Now</button>
+        <p class="login-text p3"><b> Already have an account? </b><a href="index.html"><b>Login</b></a> </p>
+    </div>
+
+
+    <script>
+        
+        document.getElementById('audioPlayer').volume = 0.05;
+    </script>
+
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"
+        import {
+            getFirestore,
+            doc,
+            collection,
+            setDoc,
+            query,
+            where,
+            getDocs,
+            orderBy,
+            limit,
+            updateDoc,
+            addDoc,
+            deleteDoc,
+            onSnapshot,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3nKMFkMmTKfcGiHDnT5QTAnBwRFbDNpM",
+            authDomain: "fruit-ninja-b29b2.firebaseapp.com",
+            projectId: "fruit-ninja-b29b2",
+            storageBucket: "fruit-ninja-b29b2.firebasestorage.app",
+            messagingSenderId: "536332668503",
+            appId: "1:536332668503:web:b2478321443955798c9d12",
+            measurementId: "G-P2N0LHL122"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        //----- New Registration code start	  
+        document.getElementById("register").addEventListener("click", function () {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var userhai = document.getElementById("username").value;
+
+
+            async function registerUser(email, password, username) {
+                try {
+                    // Step 1: Create user with email and password in Authentication
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    
+                    //Reading usernames
+                    async function getUsernames() {
+                        const usersCollection = collection(db, "users");
+
+
+                        const usersSnapshot = await getDocs(usersCollection);
+                        const usernames = [];
+
+
+                        for (const doc of usersSnapshot.docs) {
+                            const data = doc.data(); 
+                            if (data.usernames) {
+                                usernames.push(...data.usernames); 
+                            }
+                        }
+
+                        console.log(usernames); 
+                        return usernames; 
+                    }
+
+                 
+                    async function main() {
+                        const usernames = await getUsernames();
+                        usernames.push(userhai); 
+                        console.log(usernames); 
+                        const docref = doc(db, 'users', 'AMUIb49QRxOThkhJc65D')
+                        updateDoc(docref, { usernames: usernames });
+                    }
+
+                    
+                    main();
+
+
+
+
+
+                    if (user) {
+                        updateProfile(user, {
+                            displayName: userhai
+                        }).then(() => {
+                            console.log("Display name updated successfully!");
+                        }).catch((error) => {
+                            console.error("Error updating display name:", error);
+                        });
+                    } else {
+                        console.error("No user is signed in.");
+                    }
+                   
+                    const s = collection(db, "users/" + username + '/scores');
+
+                    await addDoc(s, {
+                        score: 0
+                    })
+
+
+
+                    console.log("User registered and details stored successfully!");
+                    alert("Registered Successfully!!!")
+                    window.location.href = 'final_game/start.html';
+
+                } catch (error) {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    alert(errorMessage + "\n Error Registering User");
+                }
+            }
+            registerUser(email, password, userhai);
+
+        });
+    
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

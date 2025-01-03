@@ -1,0 +1,120 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+
+
+
+}
+
+
+
+
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('Designer.jpeg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+
+}
+
+
+.register-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('Designer.jpeg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+}
+
+
+.dabba {
+    position: absolute;
+    width: 240px;
+    padding: 15px;
+    
+    font-size: 16px;
+    border-radius: 0.7em;
+    border: 1.5px solid black;
+}
+
+
+.p4{
+
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+
+}
+
+.p1 {
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+}
+.p2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+}
+
+.p3 {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+button {
+    cursor: pointer;
+    position: absolute;
+    top: 59%;
+    /* Position for the button */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 265px;
+    padding: 17px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-radius: 0.7em;
+    border: 1.5px solid black;
+    transition: background-color 0.3s;
+}
+
+
+button:hover {
+    background-color: #4CAF50;
+    color: azure;
+
+}
+button:active{
+    background-color: rgb(32, 138, 32);
+    color: azure;
+
+}
+
+.register-text,
+.login-text {
+    font-size: 20px;
+    color: rgb(232, 4, 253);
+}
+
+.register-text a,
+.login-text a {
+    font-size: 20px;
+    text-decoration: underline;
+    color: rgb(232, 4, 253);
+}

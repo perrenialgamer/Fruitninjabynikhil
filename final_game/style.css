@@ -1,0 +1,302 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    user-select: none;
+    z-index: 1;
+}
+
+#gameContainer, #startContainer {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+    z-index: 1;
+    overflow: hidden;
+}
+ 
+
+#consbutton{
+    display: flex;
+    gap: 20px;
+}
+#leaderboardScreen {
+    
+    width: 100%;
+    height: 400px;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #000;
+    overflow: hidden;
+    z-index: 1;
+    flex-direction: column; 
+  gap: 20px;
+    display: flex;
+}
+#startScreen {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #000;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fancyButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px #999;
+}
+
+.fancyButton:hover {
+    background-color: #45a049;
+}
+
+.fancyButton:active {
+    background-color: #45a049;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+
+.hidden {
+    display: none;
+}
+
+#gameArea {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #000;
+    overflow: hidden;
+    user-select: none;
+    
+}
+
+.fruit {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    transform-origin: center;
+    animation: rotate 2s linear infinite;
+    z-index: 4;
+}
+
+.splfruit {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    transform-origin: center;
+    animation: rotate 2s linear infinite;
+    z-index: 4;
+}
+
+.special-cursor {
+    cursor: url('bcursor.cur'), auto;
+  }
+.yocursor {
+    cursor: url('cursor.cur'), auto;
+  }
+
+
+
+.splash {
+
+    transition: opacity 3s ease-out, transform 3s ease-out;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+
+.bonus-text {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: rgb(96, 218, 20);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    font-family: 'Brush Script MT', cursive;
+    animation: fadeInnOut 2s ease-in-out;
+    z-index: 1000;
+  }
+
+  @keyframes fadeInnOut {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    25% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -40%);
+    }
+  }
+
+
+#trail {
+    position: absolute;
+    width: 7px; 
+    height: 7px;
+    background-color: rgba(238,238,238, 0.9);
+    border-radius: 60%; 
+    pointer-events: none; 
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: trail-animation 0.6s forwards; 
+}
+
+
+@keyframes trail-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translate(-50%, -50%);
+    }
+}
+
+
+#scoreDisplay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Verdana', sans-serif;
+    user-select: none;
+    z-index: 5;
+}
+
+#livesContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.life {
+    width: 20px;
+    height: 20px;
+    user-select: none;
+}
+
+#gameOver {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Brush Script MT', cursive;
+    display: none;
+    z-index: 10;
+}
+
+#retryButton {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    display: none;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+}
+
+#highScoreDisplay {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+    z-index: 10;
+}
+
+#backButton {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#backButton:hover {
+    background-color: #0b7dda;
+}
+
+#bbackButton {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3px 10px;
+    font-size: 18px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}

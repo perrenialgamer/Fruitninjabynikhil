@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fruits = ["apple.png", "banana.png", "sandia.png"];
   const bomb = "bomb.png";
   var isGameover = false;
-  // const splfruits='special_fruit.png';
+ 
 
   window.missFruit = function (fruit) {
     if (gameActive && activeFruits.has(fruit)) {
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           bonusTextElement.style.display = "none";
           activateSpecialMode();
-        }, 3000);
+        }, 2000);
       }, 2000);
     
     
@@ -292,8 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (spawnProb) {
       splfruit.style.backgroundImage = 'url("special_fruit.png")';
-      splfruit.style.width = "60px";
-      splfruit.style.height = "60px";
+      splfruit.style.width = "90px";
+      splfruit.style.height = "90px";
       splfruit.style.zIndex = 4;
       const startX =
         Math.random() * (gameArea.clientWidth - parseInt(splfruit.style.width));
@@ -322,11 +322,11 @@ document.addEventListener("DOMContentLoaded", () => {
           splfruit.style.left = currentX + "px";
           splfruit.style.bottom = currentY + "px";
 
-          animationId = requestAnimationFrame(animateFruit);
+         requestAnimationFrame(animateFruit);
         }
       }
 
-      animationId = requestAnimationFrame(animateFruit);
+       requestAnimationFrame(animateFruit);
 
       let mouseDown = false;
 
@@ -375,20 +375,20 @@ document.addEventListener("DOMContentLoaded", () => {
     fruit.style.backgroundImage = `url(${randomFruit})`;
 
     if (randomFruit === "sandia.png") {
-      fruit.style.width = "70px";
-      fruit.style.height = "70px";
+      fruit.style.width = "120px";
+      fruit.style.height = "120px";
       fruit.style.zIndex = 4;
     } else if (randomFruit === "bomb.png") {
-      fruit.style.width = "50px";
-      fruit.style.height = "50px";
+      fruit.style.width = "80px";
+      fruit.style.height = "80px";
       fruit.style.zIndex = 4;
     } else if (randomFruit === "apple.png") {
-      fruit.style.width = "55px";
-      fruit.style.height = "55px";
+      fruit.style.width = "90px";
+      fruit.style.height = "90px";
       fruit.style.zIndex = 4;
     } else {
-      fruit.style.width = "45px";
-      fruit.style.height = "45px";
+      fruit.style.width = "60px";
+      fruit.style.height = "60px";
       fruit.style.zIndex = 4;
     }
 
